@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello News!</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+	{% if data %}
+		{% for news in data %}
+			<figure class="news">
+			  {% if news.urlToImage %}
+			  		<img src="{{ news.urlToImage }}" alt="News" />
+			  {% endif %}
+			  <figcaption>
+			    <a href="{{ news.url }}"><h4>{{ news.title }}</h4></a>
+			    <p>{{ news.description }}</p>
+			    <hr>
+			    <div class="date">{{ news.author }}</div>
+			    <footer>
+			  <div class="source"><p class="hello">{{ news.source.name }}</p></div>
+			      
+			    </footer>
+			  </figcaption>
+
+			</figure>
+		{% endfor %}
+	{% endif %}
+</body>
+</html>
